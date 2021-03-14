@@ -1,7 +1,7 @@
 import React from 'react';
 import { shell } from 'electron';
 
-class VaxLocation extends React.Component {
+class AlertLocation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,10 @@ class VaxLocation extends React.Component {
     const location = this.props.location;
     return (
       <li>
-        <div id="vax-location" onClick={() => this.handleClick(location.link)}>
+        <div
+          id="alert-location"
+          onClick={() => this.handleClick(location.link)}
+        >
           {location.name}
         </div>
       </li>
@@ -27,4 +30,4 @@ class VaxLocation extends React.Component {
   }
 }
 
-export default VaxLocation;
+export default AlertLocation;

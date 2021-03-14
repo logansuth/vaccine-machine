@@ -7,15 +7,22 @@ import { connect } from 'react-redux';
 const HomePage = (props) => {
   return (
     <div>
-      <Header vaxLocations={props.vaxLocations} />
+      <Header
+        vaxLocations={props.vaxLocations}
+        alertLocations={props.alertLocations}
+      />
       <Filter />
-      <VaxList vaxLocations={props.vaxLocations} />
+      <VaxList
+        vaxLocations={props.vaxLocations}
+        alertLocations={props.alertLocations}
+      />
     </div>
   );
 };
 
 const mapState = (state) => ({
   vaxLocations: state.locations,
+  alertLocations: state.alerts,
 });
 
 export default connect(mapState)(HomePage);

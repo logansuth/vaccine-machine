@@ -1,7 +1,7 @@
 'use strict';
 
 // Import parts of electron to use
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 const { getData } = require('./src/utils/helpers');
@@ -115,8 +115,6 @@ async function finishedInitializing() {
     'This is the time after the initial population of data———————',
     new Date()
   );
-
-  mainWindow.webContents.send('initial', Object.keys(vaxLocations).length);
 }
 
 finishedInitializing();
@@ -155,4 +153,9 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+ipcMain.on('initial', (event, message) => {
+  console.log('received message——————', message);
+  mainWindow.webContents.send('initial', vaxLocations);
 });

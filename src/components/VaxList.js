@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class VaxList extends React.Component {
   constructor(props) {
@@ -10,8 +11,21 @@ class VaxList extends React.Component {
   }
 
   render() {
-    return <div>Here is where the vaccine locations will go.</div>;
+    const vaxLocations = this.props.vaxLocations ? this.props.vaxLocations : {};
+    console.log('this.props———————', this.props);
+    console.log('vaxLocations—————', vaxLocations);
+    return (
+      <div>
+        {Object.keys(vaxLocations).map((location, index) => {
+          return <div key={index}>{location}</div>;
+        })}
+      </div>
+    );
   }
 }
 
-export default VaxList;
+const mapState = (state) => ({
+  vaxLocations: state,
+});
+
+export default connect(mapState)(VaxList);

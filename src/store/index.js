@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const GET_LOCATIONS = 'GET_LOCATIONS';
 const NEW_ALERTS = 'NEW_ALERTS';
+const UPDATE_ALERTS = 'UPDATE_ALERTS';
 
 export const getLocations = (locationsObj) => ({
   type: GET_LOCATIONS,
@@ -11,6 +12,10 @@ export const getLocations = (locationsObj) => ({
 export const newAlerts = (alertObj) => ({
   type: NEW_ALERTS,
   alertObj,
+});
+
+export const updateAlerts = () => ({
+  type: UPDATE_ALERTS,
 });
 
 const initialState = {
@@ -39,6 +44,27 @@ const rootReducer = (state = initialState, action) => {
       }
 
       return { ...state, alerts: alertArr };
+    }
+    case UPDATE_ALERTS: {
+      const locationsMinusAlerts = state.locations.filter((location) => {
+        const locationName = location.name;
+        const alertNames = state.alerts.map((alert) => alert.name);
+
+        const indexOfLocation = alertNames.indexOf(locationName);
+
+        return indexOfLocation < 0;
+      });
+
+      const alertsMinusLocations = state.alerts.filter((alert) => {
+        const alertName = alert.name;
+        const locationNames = state.locations.map((location) => location.name);
+
+        const indexOfAlert = locationNames.indexOf(alertName);
+
+        return indexOfAlert > -1;
+      });
+
+      return { locations: locationsMinusAlerts, alerts: alertsMinusLocations };
     }
     default:
       return state;

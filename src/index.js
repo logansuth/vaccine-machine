@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import App from './components/App';
 import { Provider } from 'react-redux';
 
-import store, { getLocations, newAlerts } from './store';
+import store, { getLocations, newAlerts, updateAlerts } from './store';
 
 import { ipcRenderer, shell } from 'electron';
 
@@ -45,6 +45,7 @@ ipcRenderer.on('update', (event, data) => {
   }
 
   store.dispatch(getLocations(vaxLocations));
+  store.dispatch(updateAlerts());
 });
 
 // Since we are using HtmlWebpackPlugin WITHOUT a template, we should create our own root node in the body element before rendering into it

@@ -1,15 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-import '../assets/css/App.css'
+import '../assets/css/App.css';
+
+import Homepage from '../components/HomePage';
+
+import { ipcRenderer } from 'electron';
 
 function App() {
+  console.log(ipcRenderer);
   return (
     <div>
-      <h1>Hello, Electron!</h1>
-
-      <p>I hope you enjoy using basic-electron-react-boilerplate to start your dev off right!</p>
+      <Homepage />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

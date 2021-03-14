@@ -10,17 +10,12 @@ import { ipcRenderer, shell } from 'electron';
 ipcRenderer.send('initial', 'requesting initial data');
 
 ipcRenderer.on('initial', (event, data) => {
-  console.log('received data');
+  console.log('received data', data);
   new Notification('Appointments Available', {
     body: `There are appointments available at ${
       Object.keys(data).length
     } locations.`,
   });
-  store.dispatch(getLocations(data));
-});
-
-ipcRenderer.on('initial', (event, data) => {
-  console.log('received data');
   store.dispatch(getLocations(data));
 });
 

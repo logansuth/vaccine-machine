@@ -12,7 +12,7 @@ class VaxList extends React.Component {
   }
 
   render() {
-    const vaxLocations = this.props.vaxLocations ? this.props.vaxLocations : {};
+    const vaxLocations = this.props.vaxLocations ? this.props.vaxLocations : [];
     console.log('this.props———————', this.props);
     console.log('vaxLocations—————', vaxLocations);
     return (
@@ -25,8 +25,10 @@ class VaxList extends React.Component {
   }
 }
 
-const mapState = (state) => ({
-  vaxLocations: state,
-});
+// const mapState = (state) => ({
+//   vaxLocations: state,
+// });
 
-export default connect(mapState)(VaxList);
+// export default connect(mapState)(VaxList);
+
+export default VaxList;

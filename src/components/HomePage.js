@@ -2,15 +2,20 @@ import React from 'react';
 import Header from './Header';
 import Filter from './Filter';
 import VaxList from './VaxList';
+import { connect } from 'react-redux';
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <div>
-      <Header />
+      <Header vaxLocations={props.vaxLocations} />
       <Filter />
-      <VaxList />
+      <VaxList vaxLocations={props.vaxLocations} />
     </div>
   );
 };
 
-export default HomePage;
+const mapState = (state) => ({
+  vaxLocations: state,
+});
+
+export default connect(mapState)(HomePage);

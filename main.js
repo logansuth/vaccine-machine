@@ -124,9 +124,9 @@ async function checkForUpdates() {
 
   const newVaxLocations = populateLocations(data, startIndex, stopIndex);
 
-  const alertWorthy = compareLocationData(vaxLocations, newVaxLocations);
+  const alertLocations = compareLocationData(vaxLocations, newVaxLocations);
 
-  console.log('alertWorthy———————————', alertWorthy);
+  console.log('alertLocations———————————', alertLocations);
 
   console.log(
     'afterComparing, vaxLocations length—————',
@@ -139,11 +139,12 @@ async function checkForUpdates() {
     new Date()
   );
 
-  mainWindow.webContents.send('update', vaxLocations);
+  const updateObj = {
+    vaxLocations,
+    alertLocations,
+  };
 
-  if (Object.keys(alertWorthy).length) {
-    mainWindow.webContents.send('alert', alertWorthy);
-  }
+  mainWindow.webContents.send('update', updateObj);
 }
 
 setInterval(checkForUpdates, 60000);

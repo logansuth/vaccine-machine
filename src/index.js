@@ -24,28 +24,27 @@ ipcRenderer.on('initial', (event, data) => {
   store.dispatch(getLocations(data));
 });
 
-ipcRenderer.on('alert', (event, data) => {
-  console.log('received data in alert listener');
-
-  const objKeys = Object.keys(data);
-
-  const alertNotification = new Notification('NEW Appointments Available', {
-    body: `NEW! There are appointments available at ${objKeys.length} NEW locations.`,
-  });
-
-  // TEST THIS
-  alertNotification.onclick = () => {
-    console.log('alert Notification CLICKED!!!!!!');
-    shell.openExternal(data[objKeys[0]].link);
-  };
-
-  store.dispatch(newAlerts(data));
-});
-
 ipcRenderer.on('update', (event, data) => {
   console.log('received data in update listener');
 
-  store.dispatch(getLocations(data));
+  const vaxLocations = data.vaxLocations;
+  const alertLocations = data.alertLocations;
+  const alertKeys = Object.keys(alertLocations);
+
+  if (alertKeys.length) {
+    const alertNotification = new Notification('NEW Appointments Available', {
+      body: `NEW! There are appointments available at ${alertKeys.length} NEW locations.`,
+    });
+
+    alertNotification.onclick = () => {
+      console.log('alert Notification CLICKED!!!!!!');
+      shell.openExternal(data[alertKeys[0]].link);
+    };
+
+    store.dispatch(newAlerts(data));
+  }
+
+  store.dispatch(getLocations(vaxLocations));
 });
 
 // Since we are using HtmlWebpackPlugin WITHOUT a template, we should create our own root node in the body element before rendering into it

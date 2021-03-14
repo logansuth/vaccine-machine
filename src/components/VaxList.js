@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { shell } from 'electron';
 
 class VaxList extends React.Component {
   constructor(props) {
@@ -8,6 +9,12 @@ class VaxList extends React.Component {
       VaxList: [],
       loading: true,
     };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(link) {
+    shell.openExternal(link);
   }
 
   render() {
@@ -17,7 +24,11 @@ class VaxList extends React.Component {
     return (
       <div>
         {vaxLocations.map((location, index) => {
-          return <div key={index}>{location.name}</div>;
+          return (
+            <div key={index} onClick={() => this.handleClick(location.link)}>
+              {location.name}
+            </div>
+          );
         })}
       </div>
     );

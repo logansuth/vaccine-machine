@@ -3,14 +3,48 @@ import { render } from 'react-dom';
 import App from './components/App';
 import { Provider } from 'react-redux';
 
-import store, { getLocations } from './store';
+import store, { getLocations, newAlerts } from './store';
 
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, shell } from 'electron';
 
 ipcRenderer.send('initial', 'requesting initial data');
 
 ipcRenderer.on('initial', (event, data) => {
   console.log('received data');
+  new Notification('Appointments Available', {
+    body: `There are appointments available at ${
+      Object.keys(data).length
+    } locations.`,
+  });
+  store.dispatch(getLocations(data));
+});
+
+ipcRenderer.on('initial', (event, data) => {
+  console.log('received data');
+  store.dispatch(getLocations(data));
+});
+
+ipcRenderer.on('alert', (event, data) => {
+  console.log('received data in alert listener');
+
+  const objKeys = Object.keys(data);
+
+  const alertNotification = new Notification('NEW Appointments Available', {
+    body: `NEW! There are appointments available at ${objKeys.length} NEW locations.`,
+  });
+
+  // TEST THIS
+  alertNotification.onclick = () => {
+    console.log('alert Notification CLICKED!!!!!!');
+    shell.openExternal(data[objKeys[0]].link);
+  };
+
+  store.dispatch(newAlerts(data));
+});
+
+ipcRenderer.on('update', (event, data) => {
+  console.log('received data in update listener');
+
   store.dispatch(getLocations(data));
 });
 

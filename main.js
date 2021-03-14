@@ -139,13 +139,14 @@ async function checkForUpdates() {
     new Date()
   );
 
-  // FIX THIS!!!!!
-  // if (Object.keys(alertWorthy).length) {
-  //   mainWindow.webContents.send('update', alertWorthy);
-  // }
+  mainWindow.webContents.send('update', vaxLocations);
+
+  if (Object.keys(alertWorthy).length) {
+    mainWindow.webContents.send('alert', alertWorthy);
+  }
 }
 
-setInterval(checkForUpdates, 300000);
+setInterval(checkForUpdates, 60000);
 
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the

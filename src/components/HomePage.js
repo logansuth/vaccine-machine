@@ -15,7 +15,7 @@ const HomePage = (props) => {
 };
 
 const mapState = (state) => ({
-  vaxLocations: state,
+  vaxLocations: state.locations,
 });
 
 export default connect(mapState)(HomePage);

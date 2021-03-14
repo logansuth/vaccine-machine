@@ -16,8 +16,8 @@ class VaxList extends React.Component {
     console.log('vaxLocations—————', vaxLocations);
     return (
       <div>
-        {Object.keys(vaxLocations).map((location, index) => {
-          return <div key={index}>{location}</div>;
+        {vaxLocations.map((location, index) => {
+          return <div key={index}>{location.name}</div>;
         })}
       </div>
     );

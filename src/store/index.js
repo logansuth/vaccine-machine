@@ -2,17 +2,25 @@ import { createStore } from 'redux';
 
 const GET_LOCATIONS = 'GET_LOCATIONS';
 
-export const getLocations = (locations) => ({
+export const getLocations = (locationsObj) => ({
   type: GET_LOCATIONS,
-  locations,
+  locationsObj,
 });
 
-const initialState = {};
+const initialState = [];
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_LOCATIONS:
-      return action.locations;
+    case GET_LOCATIONS: {
+      const locationsArr = [];
+      const locationsObj = action.locationsObj;
+
+      for (let key in locationsObj) {
+        locationsArr.push(locationsObj[key]);
+      }
+
+      return locationsArr;
+    }
     default:
       return state;
   }

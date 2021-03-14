@@ -4,14 +4,22 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      county: [],
-      types: [],
       loading: true,
     };
   }
 
+  handleChange(evt) {}
+
   render() {
-    return <div>Here is where you'll filter</div>;
+    return (
+      <div>
+        <select value="none" onChange={this.handleChange}>
+          <option value="second dose">second dose</option>
+          <option value="60+">60+</option>
+          <option value="teacher">teacher</option>
+        </select>
+      </div>
+    );
   }
 }
 

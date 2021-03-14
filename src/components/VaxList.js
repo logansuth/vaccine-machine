@@ -6,7 +6,6 @@ class VaxList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      VaxList: [],
       loading: true,
     };
   }

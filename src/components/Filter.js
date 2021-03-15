@@ -16,11 +16,14 @@ class Filter extends React.Component {
 
   handleChange(evt) {
     console.log('event in event handler—————————', evt);
-    this.setState({
-      [evt.target.name]: !this.state[evt.target.name],
-    });
-
-    this.props.changeFilters(this.state);
+    this.setState(
+      {
+        [evt.target.name]: !this.state[evt.target.name],
+      },
+      () => {
+        this.props.changeFilters(this.state);
+      }
+    );
   }
 
   render() {

@@ -5,7 +5,8 @@ const Header = (props) => {
     <div>
       <h1>Vaccine Machine</h1>
       <div id="appointments">
-        There are appointments at {props.vaxLocations.length} locations.
+        There are appointments at{' '}
+        {props.vaxLocations.length + props.alertLocations.length} locations.
       </div>
     </div>
   );

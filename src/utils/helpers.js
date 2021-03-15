@@ -54,11 +54,18 @@ function parseAppointments(apptString) {
 function findTypes(name) {
   const types = [];
 
-  if (name.indexOf('Second Dose'))
+  if (name.indexOf('Second Dose') > -1) types.push('secondDose');
+
+  if (name.indexOf('60+') > -1) types.push('sixtyPlus');
+
+  if (name.indexOf('teachers') > -1) types.push('teacher');
+
+  return types;
 }
 
 module.exports = {
   getData,
   findString,
   parseAppointments,
+  findTypes,
 };

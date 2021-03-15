@@ -97,7 +97,7 @@ function populateLocations(data, startIndex, stopIndex) {
         ? 'https://www.walgreens.com/topic/promotion/covid-vaccine.jsp'
         : 'https://vax4nyc.nyc.gov/patient/s/';
 
-    const types =
+    const types = findTypes(name);
 
     const newVaxLocation = new VaxLocation(
       updatedAt,
@@ -105,7 +105,8 @@ function populateLocations(data, startIndex, stopIndex) {
       address,
       appointments,
       notes,
-      link
+      link,
+      types
     );
 
     newVaxLocations[name] = newVaxLocation;

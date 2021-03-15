@@ -1,4 +1,6 @@
 import React from 'react';
+import { updateFilters } from '../store';
+import { connect } from 'react-redux';
 
 class Filter extends React.Component {
   constructor(props) {
@@ -17,6 +19,8 @@ class Filter extends React.Component {
     this.setState({
       [evt.target.name]: !this.state[evt.target.name],
     });
+
+    this.props.changeFilters(this.state);
   }
 
   render() {
@@ -59,4 +63,8 @@ class Filter extends React.Component {
   }
 }
 
-export default Filter;
+const mapDispatchToProps = (dispatch) => ({
+  changeFilters: (filterObj) => dispatch(updateFilters(filterObj)),
+});
+
+export default connect(null, mapDispatchToProps)(Filter);

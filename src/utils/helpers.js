@@ -51,8 +51,10 @@ function parseAppointments(apptString) {
   return apptsArray;
 }
 
-function experiment() {
-  console.log('This is an experiment');
+function findTypes(name) {
+  const types = [];
+
+  if (name.indexOf('Second Dose'))
 }
 
 module.exports = {

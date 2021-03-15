@@ -1,4 +1,4 @@
-const { findString, parseAppointments } = require('./helpers');
+const { findString, parseAppointments, findTypes } = require('./helpers');
 const VaxLocation = require('./locationClass');
 
 const UPDATED_AT_SEARCH_TERMS = ['text-gray-500 inline-block', '>', '<'];
@@ -60,7 +60,6 @@ function populateLocations(data, startIndex, stopIndex) {
       startIndex,
       'updatedAt'
     );
-    console.log('updatedAt——————', updatedAt);
 
     const { name, nameEndIndex } = findString(
       data,
@@ -68,7 +67,6 @@ function populateLocations(data, startIndex, stopIndex) {
       updatedAtEndIndex,
       'name'
     );
-    console.log('name', name);
 
     const { address, addressEndIndex } = findString(
       data,
@@ -76,11 +74,6 @@ function populateLocations(data, startIndex, stopIndex) {
       nameEndIndex,
       'address'
     );
-    console.log('address', address);
-
-    // const link = findString(data);
-    // const type;
-    // const wheelchairAccess;
 
     let { appointments, appointmentsEndIndex } = findString(
       data,
@@ -88,7 +81,6 @@ function populateLocations(data, startIndex, stopIndex) {
       addressEndIndex,
       'appointments'
     );
-    console.log('apts————————', appointments);
 
     appointments = parseAppointments(appointments);
 
@@ -99,14 +91,21 @@ function populateLocations(data, startIndex, stopIndex) {
       'notes'
     );
     notes = notes.slice(6, notes.length - 1);
-    console.log('notes—————————', notes);
+
+    const link =
+      name.indexOf('Walgreens') > -1
+        ? 'https://www.walgreens.com/topic/promotion/covid-vaccine.jsp'
+        : 'https://vax4nyc.nyc.gov/patient/s/';
+
+    const types =
 
     const newVaxLocation = new VaxLocation(
       updatedAt,
       name,
       address,
       appointments,
-      notes
+      notes,
+      link
     );
 
     newVaxLocations[name] = newVaxLocation;

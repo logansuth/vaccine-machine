@@ -1,4 +1,6 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const GET_LOCATIONS = 'GET_LOCATIONS';
 const NEW_ALERTS = 'NEW_ALERTS';
@@ -48,6 +50,7 @@ const rootReducer = (state = initialState, action) => {
     case UPDATE_ALERTS: {
       const locationsMinusAlerts = state.locations.filter((location) => {
         const locationName = location.name;
+
         const alertNames = state.alerts.map((alert) => alert.name);
 
         const indexOfLocation = alertNames.indexOf(locationName);
@@ -71,4 +74,7 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export default createStore(rootReducer);
+export default createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(createLogger({ collapsed: true })))
+);

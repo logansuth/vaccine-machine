@@ -21,6 +21,7 @@ ipcRenderer.on('initial', (event, data) => {
 
 ipcRenderer.on('update', (event, data) => {
   console.log('received data in update listener');
+  console.log('DATA FROM MAIN PROCESS———————', data);
 
   const vaxLocations = data.vaxLocations;
   const alertLocations = data.alertLocations;
@@ -33,10 +34,10 @@ ipcRenderer.on('update', (event, data) => {
 
     alertNotification.onclick = () => {
       console.log('alert Notification CLICKED!!!!!!');
-      shell.openExternal(data[alertKeys[0]].link);
+      shell.openExternal(data.alertLocations[alertKeys[0]].link);
     };
 
-    store.dispatch(newAlerts(data));
+    store.dispatch(newAlerts(alertLocations));
   }
 
   store.dispatch(getLocations(vaxLocations));

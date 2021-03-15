@@ -3,7 +3,12 @@ import { render } from 'react-dom';
 import App from './components/App';
 import { Provider } from 'react-redux';
 
-import store, { getLocations, newAlerts, updateAlerts } from './store';
+import store, {
+  getLocations,
+  newAlerts,
+  updateAlerts,
+  applyFilters,
+} from './store';
 
 import { ipcRenderer, shell } from 'electron';
 
@@ -17,6 +22,7 @@ ipcRenderer.on('initial', (event, data) => {
     } locations.`,
   });
   store.dispatch(getLocations(data));
+  store.dispatch(applyFilters());
 });
 
 ipcRenderer.on('update', (event, data) => {

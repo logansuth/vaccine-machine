@@ -1,5 +1,5 @@
 import React from 'react';
-import { updateFilters } from '../store';
+import { updateFilters, applyFilters } from '../store';
 import { connect } from 'react-redux';
 
 class Filter extends React.Component {
@@ -22,6 +22,7 @@ class Filter extends React.Component {
       },
       () => {
         this.props.changeFilters(this.state);
+        this.props.applyFilters();
       }
     );
   }
@@ -68,6 +69,7 @@ class Filter extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   changeFilters: (filterObj) => dispatch(updateFilters(filterObj)),
+  applyFilters: () => dispatch(applyFilters()),
 });
 
 export default connect(null, mapDispatchToProps)(Filter);

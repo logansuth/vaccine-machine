@@ -10,19 +10,22 @@ const HomePage = (props) => {
       <Header
         vaxLocations={props.vaxLocations}
         alertLocations={props.alertLocations}
+        types={props.types}
       />
       <Filter />
       <VaxList
         vaxLocations={props.vaxLocations}
         alertLocations={props.alertLocations}
+        types={props.types}
       />
     </div>
   );
 };
 
 const mapState = (state) => ({
-  vaxLocations: state.locations,
-  alertLocations: state.alerts,
+  vaxLocations: state.filteredLocations,
+  alertLocations: state.filteredAlerts,
+  types: state.types,
 });
 
 export default connect(mapState)(HomePage);

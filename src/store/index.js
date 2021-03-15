@@ -6,6 +6,7 @@ const GET_LOCATIONS = 'GET_LOCATIONS';
 const NEW_ALERTS = 'NEW_ALERTS';
 const UPDATE_ALERTS = 'UPDATE_ALERTS';
 const UPDATE_FILTERS = 'UPDATE_FILTERS';
+const APPLY_FILTERS = 'APPLY FILTERS';
 
 export const getLocations = (locationsObj) => ({
   type: GET_LOCATIONS,
@@ -26,10 +27,16 @@ export const updateFilters = (filterObj) => ({
   filterObj,
 });
 
+export const applyFilters = () => ({
+  type: APPLY_FILTERS,
+});
+
 const initialState = {
   locations: [],
   alerts: [],
   types: ['secondDose', 'teacher', 'sixtyPlus'],
+  filteredLocations: [],
+  filteredAlerts: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -89,6 +96,31 @@ const rootReducer = (state = initialState, action) => {
       }
 
       return { ...state, types: types };
+    }
+    case APPLY_FILTERS: {
+      const filters = state.types;
+
+      const filteredLocations = state.locations.filter((location) => {
+        for (let i = 0; i < location.types.length; i++) {
+          if (filters.indexOf(location.types[i]) < 0) return false;
+        }
+
+        return true;
+      });
+
+      const filteredAlerts = state.alerts.filter((location) => {
+        for (let i = 0; i < location.types.length; i++) {
+          if (filters.indexOf(location.types[i]) < 0) return false;
+        }
+
+        return true;
+      });
+
+      return {
+        ...state,
+        filteredLocations: filteredLocations,
+        filteredAlerts: filteredAlerts,
+      };
     }
     default:
       return state;

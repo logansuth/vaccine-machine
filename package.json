@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-webpack-boilerplate",
+  "name": "vaccine-machine",
   "version": "1.15.0",
-  "description": "Minimal Electron, React, PostCSS and Webpack boilerplate to help you get started with building your next app.",
+  "description": "A desktop app that helps you find a vaccine appointment",
   "license": "MIT",
   "private": false,
   "repository": {

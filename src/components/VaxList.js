@@ -15,8 +15,6 @@ class VaxList extends React.Component {
     const alertLocations = this.props.alertLocations
       ? this.props.alertLocations
       : [];
-    console.log('this.props———————', this.props);
-    console.log('vaxLocations—————', vaxLocations);
     return (
       <ul>
         {alertLocations.map((location, index) => {

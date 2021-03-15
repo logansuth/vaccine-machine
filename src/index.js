@@ -48,6 +48,7 @@ ipcRenderer.on('update', (event, data) => {
 
   store.dispatch(getLocations(vaxLocations));
   store.dispatch(updateAlerts());
+  store.dispatch(applyFilters());
 });
 
 // Since we are using HtmlWebpackPlugin WITHOUT a template, we should create our own root node in the body element before rendering into it

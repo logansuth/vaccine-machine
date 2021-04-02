@@ -2,6 +2,7 @@ const axios = require('axios');
 
 async function getData() {
   try {
+    console.log('IN GETDATA————————');
     const { data } = await axios.get('https://nycvaccinelist.com/');
 
     const startIndex = data.indexOf('text-gray-500 inline-block');
@@ -14,11 +15,16 @@ async function getData() {
 }
 
 function findString(data, searchTerms, beginningIndex, variableName) {
+  console.log('IN FIND STRING———————————');
+  console.log('BEGINNING INDEX IN FIND STRING————', beginningIndex);
   const preStartIndex = data.indexOf(searchTerms[0], beginningIndex);
+  console.log('PRESTART INDEX IN FIND STRING—————', preStartIndex);
 
   const startIndex = data.indexOf(searchTerms[1], preStartIndex) + 1;
+  console.log('START INDEX in FIND STRING—————', startIndex);
 
   const endIndex = data.indexOf(searchTerms[2], startIndex);
+  console.log('END INDEX IN FIND STRING————', endIndex);
 
   return {
     [variableName]: data.slice(startIndex, endIndex),
@@ -27,6 +33,7 @@ function findString(data, searchTerms, beginningIndex, variableName) {
 }
 
 function parseAppointments(apptString) {
+  console.log('IN PARSE APPTS———————————');
   const apptsArray = [];
   let startIndex = 0;
 
@@ -52,6 +59,7 @@ function parseAppointments(apptString) {
 }
 
 function findTypes(name) {
+  console.log('IN FINDTYPES———————');
   const types = [];
 
   if (name.indexOf('Second Dose') > -1) types.push('secondDose');

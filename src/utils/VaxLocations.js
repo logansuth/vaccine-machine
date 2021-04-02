@@ -18,7 +18,7 @@ const APPOINTMENTS_SEARCH_TERMS = [
 ];
 
 const NOTES_SEARCH_TERMS = [
-  `aria-hidden="true" class="pencil icon"`,
+  `</button></div><div class="text-gray-600 pt-2 text-lg">`,
   '<span>',
   '</span>',
 ];
@@ -51,9 +51,12 @@ function compareLocationData(oldData, newData) {
 }
 
 function populateLocations(data, startIndex, stopIndex) {
+  console.log('IN POPULATE LOCATIONS————————');
   const newVaxLocations = {};
 
   while (startIndex < stopIndex) {
+    console.log('START INDEX', startIndex);
+    console.log('STOP INDEX', stopIndex);
     const { updatedAt, updatedAtEndIndex } = findString(
       data,
       UPDATED_AT_SEARCH_TERMS,
@@ -61,12 +64,16 @@ function populateLocations(data, startIndex, stopIndex) {
       'updatedAt'
     );
 
+    console.log('UPDATED AT INDEX—————', updatedAtEndIndex);
+
     const { name, nameEndIndex } = findString(
       data,
       NAME_SEARCH_TERMS,
       updatedAtEndIndex,
       'name'
     );
+
+    console.log('NAME END INDEX—————', nameEndIndex);
 
     const { address, addressEndIndex } = findString(
       data,
@@ -81,6 +88,7 @@ function populateLocations(data, startIndex, stopIndex) {
       addressEndIndex,
       'appointments'
     );
+    console.log('APTS END INDEX——————', appointmentsEndIndex);
 
     appointments = parseAppointments(appointments);
 
@@ -91,6 +99,7 @@ function populateLocations(data, startIndex, stopIndex) {
       'notes'
     );
     notes = notes.slice(6, notes.length - 1);
+    console.log('NOTES END INDEX——————', notesEndIndex);
 
     const link =
       name.indexOf('Walgreens') > -1
@@ -112,8 +121,11 @@ function populateLocations(data, startIndex, stopIndex) {
     newVaxLocations[name] = newVaxLocation;
 
     startIndex = notesEndIndex;
+
+    console.log(newVaxLocations);
   }
 
+  console.log('LEAVING POPULATE LOCATIONS———————');
   return newVaxLocations;
 }
 

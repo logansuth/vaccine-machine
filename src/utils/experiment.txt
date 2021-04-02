@@ -1,0 +1,4 @@
+rounded text-sm sm:text-md block cursor-pointer focus:outline-black" aria-label="Join waitlist "
+
+rounded text-sm sm:text-md block cursor-pointer focus:outline-black" aria-label="Sign up"
+

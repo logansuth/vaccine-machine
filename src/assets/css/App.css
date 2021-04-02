@@ -36,6 +36,10 @@ a:hover {
   text-shadow: 1px 1px lightpink;
 }
 
+.vax-location:hover {
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
   flex-direction: column;

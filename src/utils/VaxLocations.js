@@ -108,10 +108,12 @@ function populateLocations(data, startIndices, stopIndex) {
     if (found) {
       notes = notes.slice(6, notes.length - 1);
       console.log('NOTES END INDEX——————', notesEndIndex);
+    } else {
+      notes = null;
     }
 
     const link =
-      name.indexOf('Walgreens') > -1
+      name.indexOf('Walgreens') > -1 || name.indexOf('Duane Reade') > -1
         ? 'https://www.walgreens.com/topic/promotion/covid-vaccine.jsp'
         : 'https://vax4nyc.nyc.gov/patient/s/';
 

@@ -6,7 +6,7 @@ async function getData() {
     const { data } = await axios.get('https://nycvaccinelist.com/');
 
     const startIndex = data.indexOf('text-gray-500 inline-block');
-    const stopIndex = data.indexOf('have openings');
+    const stopIndex = data.indexOf('Manually checked');
 
     return { data, startIndex, stopIndex };
   } catch (err) {

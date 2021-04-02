@@ -26,23 +26,34 @@ function findIndices(data) {
   }
 
   console.log('START INDICES—————', startIndices);
+  // DO I NEED TO POP OFF THE LAST ONE?
 
   return [startIndices, stopIndex];
 }
 
-function findString(data, searchTerms, beginningIndex, variableName) {
+function findString(
+  data,
+  searchTerms,
+  beginningIndex,
+  variableName,
+  stopIndex
+) {
   console.log('IN FIND STRING———————————');
-  console.log('BEGINNING INDEX IN FIND STRING————', beginningIndex);
+
   const preStartIndex = data.indexOf(searchTerms[0], beginningIndex);
   console.log('PRESTART INDEX IN FIND STRING—————', preStartIndex);
+  if (preStartIndex < 0 || preStartIndex > stopIndex) return { found: false };
 
   const startIndex = data.indexOf(searchTerms[1], preStartIndex) + 1;
   console.log('START INDEX in FIND STRING—————', startIndex);
+  if (startIndex < 0 || startIndex > stopIndex) return { found: false };
 
   const endIndex = data.indexOf(searchTerms[2], startIndex);
+  if (endIndex < 0 || endIndex > stopIndex) return { found: false };
   console.log('END INDEX IN FIND STRING————', endIndex);
 
   return {
+    found: true,
     [variableName]: data.slice(startIndex, endIndex),
     [variableName + 'EndIndex']: endIndex,
   };

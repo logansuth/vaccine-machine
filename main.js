@@ -109,14 +109,14 @@ async function finishedInitializing() {
 
   const [startIndices, stopIndex] = findIndices(data);
 
-  // const initialVaxLocations = populateLocations(data, startIndices, stopIndex);
+  const initialVaxLocations = populateLocations(data, startIndices, stopIndex);
 
-  // vaxLocations = initialVaxLocations;
-  // console.log(vaxLocations);
-  // console.log(
-  //   'This is the time after the initial population of data———————',
-  //   new Date()
-  // );
+  vaxLocations = initialVaxLocations;
+  console.log(vaxLocations);
+  console.log(
+    'This is the time after the initial population of data———————',
+    new Date()
+  );
 }
 
 finishedInitializing();
@@ -124,7 +124,9 @@ finishedInitializing();
 async function checkForUpdates() {
   const data = await getData();
 
-  const newVaxLocations = populateLocations(data, startIndex, stopIndex);
+  const [startIndices, stopIndex] = findIndices(data);
+
+  const newVaxLocations = populateLocations(data, startIndices, stopIndex);
 
   const alertLocations = compareLocationData(vaxLocations, newVaxLocations);
 

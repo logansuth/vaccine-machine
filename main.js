@@ -4,7 +4,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
-const { getData } = require('./src/utils/helpers');
+const { getData, findIndices } = require('./src/utils/helpers');
 const {
   populateLocations,
   compareLocationData,
@@ -105,22 +105,24 @@ async function finishedInitializing() {
   createWindow();
 
   // Make HTTPS call to website to get data + start, stop indices
-  const { data, startIndex, stopIndex } = await getData();
+  const data = await getData();
 
-  const initialVaxLocations = populateLocations(data, startIndex, stopIndex);
+  const [startIndices, stopIndex] = findIndices(data);
 
-  vaxLocations = initialVaxLocations;
-  console.log(vaxLocations);
-  console.log(
-    'This is the time after the initial population of data———————',
-    new Date()
-  );
+  // const initialVaxLocations = populateLocations(data, startIndices, stopIndex);
+
+  // vaxLocations = initialVaxLocations;
+  // console.log(vaxLocations);
+  // console.log(
+  //   'This is the time after the initial population of data———————',
+  //   new Date()
+  // );
 }
 
 finishedInitializing();
 
 async function checkForUpdates() {
-  const { data, startIndex, stopIndex } = await getData();
+  const data = await getData();
 
   const newVaxLocations = populateLocations(data, startIndex, stopIndex);
 

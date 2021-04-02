@@ -5,13 +5,29 @@ async function getData() {
     console.log('IN GETDATA————————');
     const { data } = await axios.get('https://nycvaccinelist.com/');
 
-    const startIndex = data.indexOf('text-gray-500 inline-block');
-    const stopIndex = data.indexOf('Manually checked');
-
-    return { data, startIndex, stopIndex };
+    return data;
   } catch (err) {
     console.log('error in getData func', err);
   }
+}
+
+function findIndices(data) {
+  const stopIndex = data.indexOf('Manually checked');
+
+  const startIndices = [];
+
+  let startIndex = 0;
+
+  while (startIndex < stopIndex && startIndex !== -1) {
+    startIndex = data.indexOf('text-gray-500 inline-block', startIndex + 1);
+
+    if (startIndex > -1 && startIndex < stopIndex)
+      startIndices.push(startIndex);
+  }
+
+  console.log('START INDICES—————', startIndices);
+
+  return [startIndices, stopIndex];
 }
 
 function findString(data, searchTerms, beginningIndex, variableName) {
@@ -76,4 +92,5 @@ module.exports = {
   findString,
   parseAppointments,
   findTypes,
+  findIndices,
 };

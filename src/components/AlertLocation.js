@@ -19,10 +19,7 @@ class AlertLocation extends React.Component {
     const location = this.props.location;
     return (
       <li>
-        <div
-          id="alert-location"
-          onClick={() => this.handleClick(location.link)}
-        >
+        <div className="alert" onClick={() => this.handleClick(location.link)}>
           {location.name}
         </div>
       </li>

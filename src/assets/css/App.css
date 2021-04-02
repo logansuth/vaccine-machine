@@ -9,11 +9,31 @@
 }
 
 h1 {
-  font-weight: bold;
+  font-weight: 900;
+  font-size: 3.5rem;
+}
+
+.alert {
+  font-weight: 900;
+  color: hotpink;
+  text-shadow: 1px 1px lightpink;
+}
+
+.bold {
+  font-weight: 900;
 }
 
 h2 {
   font-size: 1rem;
+}
+
+a {
+  color: #00a1e4;
+}
+
+a:hover {
+  color: hotpink;
+  text-shadow: 1px 1px lightpink;
 }
 
 .flex {

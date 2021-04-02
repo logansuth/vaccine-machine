@@ -10,7 +10,10 @@ const Header = (props) => {
       <br></br>
       <div id="appointments">
         There are appointments at
-        <b> {props.vaxLocations.length + props.alertLocations.length} </b>
+        <span className="alert">
+          {' '}
+          {props.vaxLocations.length + props.alertLocations.length}{' '}
+        </span>
         locations.
       </div>
     </div>

@@ -12,7 +12,6 @@ const HomePage = (props) => {
         alertLocations={props.alertLocations}
         types={props.types}
       />
-      {/* <Filter /> */}
       <VaxList
         vaxLocations={props.vaxLocations}
         alertLocations={props.alertLocations}

@@ -2,16 +2,19 @@ import React from 'react';
 
 const Location = (props) => {
   const { location, alert, handleClick } = props;
-  const classNames = alert
-    ? 'alert vax-location external-link vax-name'
-    : 'vax-location external-link vax-name';
+  const sharedClasses = 'vax-location external-link vax-name';
+  const classNames = alert ? sharedClasses + ' alert' : sharedClasses;
 
   return (
     <div className="location">
-      <span className={classNames} onClick={() => handleClick(location.link)}>
-        {location.name}
-      </span>
-      <div className="updated-at">{location.updatedAt}</div>
+      <div>
+        <span className={classNames} onClick={() => handleClick(location.link)}>
+          {location.name}
+        </span>
+        &nbsp; &nbsp; &nbsp;
+        <span className="updated-at">{location.updatedAt}</span>
+      </div>
+      <div className="address">{location.address}</div>
     </div>
   );
 };

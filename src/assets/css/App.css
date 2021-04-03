@@ -5,7 +5,7 @@
 
 * {
   font-family: 'Quicksand', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 h1 {
@@ -69,6 +69,16 @@ a:hover {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+}
+
+.updated-at {
+  font-size: 0.8rem;
+  color: slategray;
+}
+
+.address {
+  font-size: 0.8rem;
+  color: slategray;
 }
 
 #vax-list {

@@ -64,8 +64,12 @@ a:hover {
   text-shadow: 1px 1px #89fc00;
 }
 
+.location {
+  margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
 #vax-list {
-  margin: 2rem 1rem 0rem 1rem;
+  margin: 2rem 2rem 0rem 2rem;
   align-items: flex-start;
 }
 
@@ -80,4 +84,10 @@ a:hover {
   padding: 2rem;
   border: 1px solid hotpink;
   border-radius: 80px;
+}
+
+#number-apts {
+  font-weight: 900;
+  color: hotpink;
+  text-shadow: 1px 1px lightpink;
 }

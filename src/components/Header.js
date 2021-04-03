@@ -21,7 +21,7 @@ const Header = (props) => {
       <br></br>
       <div id="appointments">
         There are appointments at
-        <span className="alert">
+        <span id="number-apts">
           {' '}
           {props.vaxLocations.length + props.alertLocations.length}{' '}
         </span>

@@ -18,9 +18,9 @@ class VaxLocation extends React.Component {
   render() {
     const location = this.props.location;
     return (
-      <div className="vax-location external-link">
+      <div className="location">
         <span
-          className="vax-name"
+          className="vax-location external-link vax-name"
           onClick={() => this.handleClick(location.link)}
         >
           {location.name}

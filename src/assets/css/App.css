@@ -58,6 +58,11 @@ a:hover {
   justify-content: space-between;
 }
 
+.external-link:hover {
+  cursor: pointer;
+  color: #2eb8f6;
+}
+
 #vax-list {
   margin: 2rem 1rem 0rem 1rem;
   align-items: flex-start;
@@ -70,6 +75,7 @@ a:hover {
 }
 
 #header {
+  margin-top: 2rem;
   padding: 2rem;
   border: 1px solid hotpink;
   border-radius: 80px;

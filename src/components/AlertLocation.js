@@ -25,7 +25,6 @@ class AlertLocation extends React.Component {
         >
           {location.name}
         </div>
-        <hr></hr>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { shell } from 'electron';
 
 const Header = (props) => {
   return (
@@ -7,7 +8,13 @@ const Header = (props) => {
         <h1>Vaccine Machine</h1>
         <h2>
           Data from: &nbsp;
-          <a href="https://www.nycvaccinelist.com/">NYC Vaccine List</a>
+          <span
+            className="external-link"
+            onClick={() => shell.openExternal('https://nycvaccinelist.com/')}
+          >
+            NYC Vaccine List
+          </span>
+          &nbsp;
         </h2>
       </span>
       <br></br>

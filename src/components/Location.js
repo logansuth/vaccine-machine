@@ -18,8 +18,8 @@ const Location = (props) => {
       <div className="address">{location.address}</div>
       <div className="appointments">
         Appointments:
-        {location.appointments.map((appointment) => (
-          <Appointment appointment={appointment} />
+        {location.appointments.map((appointment, index) => (
+          <Appointment key={index} appointment={appointment} />
         ))}
       </div>
     </div>

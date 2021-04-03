@@ -120,3 +120,31 @@ a:hover {
   color: hotpink;
   text-shadow: 1px 1px lightpink;
 }
+
+#how-to-button {
+  margin: 1rem 0rem 1rem 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#how-to-button:hover {
+  color: hotpink;
+  text-shadow: 1px 1px lightpink;
+}
+
+#info {
+  color: black;
+  font-size: 0.9rem;
+}
+
+#info li {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+#nyc-vaccine:hover {
+  color: hotpink;
+  text-shadow: 1px 1px lightpink;
+}

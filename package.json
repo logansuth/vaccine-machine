@@ -1,5 +1,6 @@
 {
   "name": "vaccine-machine",
+  "productName": "Vaccine Machine",
   "version": "1.15.0",
   "description": "A desktop app that helps you find a vaccine appointment",
   "license": "MIT",

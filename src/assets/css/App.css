@@ -148,3 +148,12 @@ a:hover {
   color: hotpink;
   text-shadow: 1px 1px lightpink;
 }
+
+#copyright {
+  margin-left: 2rem;
+}
+
+#copyright * {
+  font-size: 0.7rem;
+  color: slategray;
+}

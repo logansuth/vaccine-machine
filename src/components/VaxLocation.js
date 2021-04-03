@@ -1,5 +1,6 @@
 import React from 'react';
 import { shell } from 'electron';
+import Location from './Location';
 
 class VaxLocation extends React.Component {
   constructor(props) {
@@ -18,14 +19,11 @@ class VaxLocation extends React.Component {
   render() {
     const location = this.props.location;
     return (
-      <div className="location">
-        <span
-          className="vax-location external-link vax-name"
-          onClick={() => this.handleClick(location.link)}
-        >
-          {location.name}
-        </span>
-      </div>
+      <Location
+        alert={false}
+        location={location}
+        handleClick={this.handleClick}
+      />
     );
   }
 }

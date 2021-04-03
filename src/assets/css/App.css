@@ -66,11 +66,14 @@ a:hover {
 
 .location {
   margin: 0.5rem 0rem 0.5rem 0rem;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
 #vax-list {
   margin: 2rem 2rem 0rem 2rem;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 #appointments {

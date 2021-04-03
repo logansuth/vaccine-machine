@@ -19,7 +19,7 @@ const Header = (props) => {
       </span>
       <br></br>
       <br></br>
-      <div id="appointments">
+      <div id="appointments-num">
         There are appointments at
         <span id="number-apts">
           {' '}

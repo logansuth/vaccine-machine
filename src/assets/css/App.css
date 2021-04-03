@@ -51,6 +51,10 @@ a:hover {
   margin: 0.25rem 0rem 0.25rem 0rem;
 }
 
+.vax-name {
+  font-weight: bold;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -60,8 +64,8 @@ a:hover {
 
 .external-link:hover {
   cursor: pointer;
-  color: #04e762;
-  text-shadow: 1px 1px #89fc00;
+  color: darkolivegreen;
+  text-shadow: 1px 1px #04e762;
 }
 
 .location {
@@ -79,6 +83,18 @@ a:hover {
 .address {
   font-size: 0.8rem;
   color: slategray;
+  margin-bottom: 0.5rem;
+}
+
+.appointments {
+  margin-left: 2rem;
+  color: black;
+  font-size: 0.9rem;
+}
+
+.appointment {
+  font-size: 0.9rem;
+  color: slategray;
 }
 
 #vax-list {
@@ -86,16 +102,16 @@ a:hover {
   align-items: stretch;
 }
 
-#appointments {
+#appointments-num {
   padding: 1rem;
-  border: 1px solid #04e762;
+  border: 2px solid #04e762;
   border-radius: 80px;
 }
 
 #header {
   margin-top: 2rem;
   padding: 2rem;
-  border: 1px solid hotpink;
+  border: 2px solid hotpink;
   border-radius: 80px;
 }
 

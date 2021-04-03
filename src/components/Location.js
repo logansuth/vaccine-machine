@@ -1,4 +1,5 @@
 import React from 'react';
+import Appointment from './Appointment';
 
 const Location = (props) => {
   const { location, alert, handleClick } = props;
@@ -15,6 +16,12 @@ const Location = (props) => {
         <span className="updated-at">{location.updatedAt}</span>
       </div>
       <div className="address">{location.address}</div>
+      <div className="appointments">
+        Appointments:
+        {location.appointments.map((appointment) => (
+          <Appointment appointment={appointment} />
+        ))}
+      </div>
     </div>
   );
 };

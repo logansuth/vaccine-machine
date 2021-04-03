@@ -7,7 +7,6 @@ import Homepage from '../components/HomePage';
 import { ipcRenderer } from 'electron';
 
 function App() {
-  console.log(ipcRenderer);
   return (
     <div>
       <Homepage />

@@ -15,7 +15,6 @@ import { ipcRenderer, shell } from 'electron';
 ipcRenderer.send('initial', 'requesting initial data');
 
 ipcRenderer.on('initial', (event, data) => {
-  console.log('received data', data);
   new Notification('Appointments Available', {
     body: `There are appointments available at ${
       Object.keys(data).length
@@ -26,9 +25,6 @@ ipcRenderer.on('initial', (event, data) => {
 });
 
 ipcRenderer.on('update', (event, data) => {
-  console.log('received data in update listener');
-  console.log('DATA FROM MAIN PROCESS———————', data);
-
   const vaxLocations = data.vaxLocations;
   const alertLocations = data.alertLocations;
   const alertKeys = Object.keys(alertLocations);
@@ -39,7 +35,6 @@ ipcRenderer.on('update', (event, data) => {
     });
 
     alertNotification.onclick = () => {
-      console.log('alert Notification CLICKED!!!!!!');
       shell.openExternal(data.alertLocations[alertKeys[0]].link);
     };
 

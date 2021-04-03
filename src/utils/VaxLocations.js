@@ -50,13 +50,10 @@ function compareLocationData(oldData, newData) {
     }
   }
 
-  console.log(new Date());
-
   return alertWorthy;
 }
 
 function populateLocations(data, startIndices, stopIndex) {
-  console.log('IN POPULATE LOCATIONS————————');
   const newVaxLocations = {};
 
   let startIndex = startIndices.shift();
@@ -71,8 +68,6 @@ function populateLocations(data, startIndices, stopIndex) {
       endIndex
     );
 
-    console.log('UPDATED AT INDEX—————', updatedAtEndIndex);
-
     const { name, nameEndIndex } = findString(
       data,
       NAME_SEARCH_TERMS,
@@ -80,8 +75,6 @@ function populateLocations(data, startIndices, stopIndex) {
       'name',
       endIndex
     );
-
-    console.log('NAME END INDEX—————', nameEndIndex);
 
     const { address, addressEndIndex } = findString(
       data,
@@ -98,11 +91,10 @@ function populateLocations(data, startIndices, stopIndex) {
       'appointments',
       endIndex
     );
-    console.log('APTS END INDEX——————', appointmentsEndIndex);
 
     appointments = parseAppointments(appointments);
 
-    let { found, notes, notesEndIndex } = findString(
+    let { found, notes } = findString(
       data,
       NOTES_SEARCH_TERMS,
       appointmentsEndIndex,
@@ -112,7 +104,6 @@ function populateLocations(data, startIndices, stopIndex) {
 
     if (found) {
       notes = notes.slice(6, notes.length - 1);
-      console.log('NOTES END INDEX——————', notesEndIndex);
     } else {
       notes = null;
     }
@@ -132,13 +123,11 @@ function populateLocations(data, startIndices, stopIndex) {
     );
 
     newVaxLocations[name] = newVaxLocation;
-    console.log(newVaxLocations);
 
     startIndex = startIndices.shift();
     endIndex = startIndices[0] || stopIndex;
   }
 
-  console.log('LEAVING POPULATE LOCATIONS———————');
   return newVaxLocations;
 }
 

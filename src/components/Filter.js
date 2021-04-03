@@ -15,7 +15,6 @@ class Filter extends React.Component {
   }
 
   handleChange(evt) {
-    console.log('event in event handler—————————', evt);
     this.setState(
       {
         [evt.target.name]: !this.state[evt.target.name],
@@ -28,7 +27,6 @@ class Filter extends React.Component {
   }
 
   render() {
-    console.log('this.state in filter———————', this.state);
     return (
       <div>
         <form>

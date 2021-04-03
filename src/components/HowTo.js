@@ -18,7 +18,6 @@ class HowTo extends React.Component {
   }
 
   render() {
-    console.log('THIS>STATE', this.state);
     return (
       <div>
         <div

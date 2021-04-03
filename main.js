@@ -104,7 +104,6 @@ async function finishedInitializing() {
 
   createWindow();
 
-  // Make HTTPS call to website to get data + start, stop indices
   const data = await getData();
 
   const [startIndices, stopIndex] = findIndices(data);
@@ -112,11 +111,8 @@ async function finishedInitializing() {
   const initialVaxLocations = populateLocations(data, startIndices, stopIndex);
 
   vaxLocations = initialVaxLocations;
-  console.log(vaxLocations);
-  console.log(
-    'This is the time after the initial population of data———————',
-    new Date()
-  );
+
+  mainWindow.webContents.send('initial', vaxLocations);
 }
 
 finishedInitializing();
@@ -129,19 +125,6 @@ async function checkForUpdates() {
   const newVaxLocations = populateLocations(data, startIndices, stopIndex);
 
   const alertLocations = compareLocationData(vaxLocations, newVaxLocations);
-
-  console.log('alertLocations———————————', alertLocations);
-
-  console.log(
-    'afterComparing, vaxLocations length—————',
-    Object.keys(vaxLocations).length
-  );
-
-  console.log('have Vax locations changed?———————', vaxLocations);
-  console.log(
-    'this is the time after vaxLocations were updated———————',
-    new Date()
-  );
 
   const updateObj = {
     vaxLocations,
@@ -162,6 +145,5 @@ app.on('activate', () => {
 });
 
 ipcMain.on('initial', (event, message) => {
-  console.log('received message——————', message);
   mainWindow.webContents.send('initial', vaxLocations);
 });

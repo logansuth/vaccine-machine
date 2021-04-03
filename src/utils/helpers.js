@@ -4,12 +4,11 @@ const vax4nycLocations = require('./vax4nycLocations');
 
 async function getData() {
   try {
-    console.log('IN GETDATA————————');
     const { data } = await axios.get('https://nycvaccinelist.com/');
 
     return data;
   } catch (err) {
-    console.log('error in getData func', err);
+    console.error('error in getData func', err);
   }
 }
 
@@ -27,9 +26,6 @@ function findIndices(data) {
       startIndices.push(startIndex);
   }
 
-  console.log('START INDICES—————', startIndices);
-  // DO I NEED TO POP OFF THE LAST ONE?
-
   return [startIndices, stopIndex];
 }
 
@@ -40,19 +36,17 @@ function findString(
   variableName,
   stopIndex
 ) {
-  console.log('IN FIND STRING———————————');
-
   const preStartIndex = data.indexOf(searchTerms[0], beginningIndex);
-  console.log('PRESTART INDEX IN FIND STRING—————', preStartIndex);
+
   if (preStartIndex < 0 || preStartIndex > stopIndex) return { found: false };
 
   const startIndex = data.indexOf(searchTerms[1], preStartIndex) + 1;
-  console.log('START INDEX in FIND STRING—————', startIndex);
+
   if (startIndex < 0 || startIndex > stopIndex) return { found: false };
 
   const endIndex = data.indexOf(searchTerms[2], startIndex);
+
   if (endIndex < 0 || endIndex > stopIndex) return { found: false };
-  console.log('END INDEX IN FIND STRING————', endIndex);
 
   return {
     found: true,
@@ -62,7 +56,6 @@ function findString(
 }
 
 function parseAppointments(apptString) {
-  console.log('IN PARSE APPTS———————————');
   const apptsArray = [];
   let startIndex = 0;
 
@@ -88,7 +81,6 @@ function parseAppointments(apptString) {
 }
 
 function findTypes(name) {
-  console.log('IN FINDTYPES———————');
   const types = [];
 
   if (name.indexOf('Second Dose') > -1) types.push('secondDose');

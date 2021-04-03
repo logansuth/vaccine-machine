@@ -141,7 +141,7 @@ a:hover {
 
 #info li {
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  margin: 0rem 1.5rem 1rem 1.5rem;
 }
 
 #nyc-vaccine:hover {

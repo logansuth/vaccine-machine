@@ -1,7 +1,7 @@
 /* Main CSS file */
 
 @import '_example/_example.css';
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
 
 * {
   font-family: 'Quicksand', sans-serif;
@@ -19,7 +19,7 @@ h2 {
 }
 
 a {
-  color: #2eb8f6;
+  color: #04e762;
 }
 
 a:hover {
@@ -33,12 +33,12 @@ a:hover {
   text-shadow: 1px 1px lightpink;
 }
 
-.bold {
-  font-weight: 900;
+.alert:hover {
+  text-shadow: 1px 1px #89fc00;
 }
 
-.vax-name:hover {
-  cursor: pointer;
+.bold {
+  font-weight: 900;
 }
 
 .flex {
@@ -60,7 +60,8 @@ a:hover {
 
 .external-link:hover {
   cursor: pointer;
-  color: #2eb8f6;
+  color: #04e762;
+  text-shadow: 1px 1px #89fc00;
 }
 
 #vax-list {
@@ -70,7 +71,7 @@ a:hover {
 
 #appointments {
   padding: 1rem;
-  border: 1px solid #2eb8f6;
+  border: 1px solid #04e762;
   border-radius: 80px;
 }
 

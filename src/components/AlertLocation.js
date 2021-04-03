@@ -20,7 +20,7 @@ class AlertLocation extends React.Component {
     return (
       <div>
         <div
-          className="alert vax-location"
+          className="alert vax-location external-link"
           onClick={() => this.handleClick(location.link)}
         >
           {location.name}

@@ -1,5 +1,6 @@
 const axios = require('axios');
 const amIEligibleLocations = require('./amIEligibleLocations');
+const vax4nycLocations = require('./vax4nycLocations');
 
 async function getData() {
   try {
@@ -100,6 +101,10 @@ function findTypes(name) {
 }
 
 function findLink(name) {
+  const index = name.indexOf('(');
+
+  if (index > -1) name = name.slice(0, index - 1);
+
   if (name.indexOf('Walgreens') > -1 || name.indexOf('Duane Reade') > -1) {
     return 'https://www.walgreens.com/topic/promotion/covid-vaccine.jsp';
   } else if (name.indexOf('CVS') > -1) {
@@ -108,8 +113,17 @@ function findLink(name) {
     return 'https://www.riteaid.com/pharmacy/covid-qualifier';
   } else if (amIEligibleLocations.includes(name)) {
     return 'https://am-i-eligible.covid19vaccine.health.ny.gov/';
-  } else {
+  } else if (vax4nycLocations.includes(name)) {
     return 'https://vax4nyc.nyc.gov/patient/s/';
+  } else if (name.indexOf('Belle Mead') > -1) {
+    return 'https://www.bellemeadrx.com/bookings-checkout/covid-19-vaccine/book';
+  } else if (
+    name.indexOf('Westchester Chappaqua Crossing') > -1 ||
+    name.indexOf('Suffolk- Dolan Center') > -1
+  ) {
+    return 'https://northwellvaccine.force.com/s/?id=a1T4x000007TQSKEA4';
+  } else {
+    return 'https://epicmychart.nychhc.org/MyChart/Authentication/Login?';
   }
 }
 

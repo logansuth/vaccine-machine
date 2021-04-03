@@ -18,11 +18,15 @@ class AlertLocation extends React.Component {
   render() {
     const location = this.props.location;
     return (
-      <li>
-        <div className="alert" onClick={() => this.handleClick(location.link)}>
+      <div>
+        <div
+          className="alert vax-location"
+          onClick={() => this.handleClick(location.link)}
+        >
           {location.name}
         </div>
-      </li>
+        <hr></hr>
+      </div>
     );
   }
 }

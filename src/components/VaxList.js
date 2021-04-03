@@ -16,14 +16,14 @@ class VaxList extends React.Component {
       ? this.props.alertLocations
       : [];
     return (
-      <ul>
+      <div className="flex" id="vax-list">
         {alertLocations.map((location, index) => {
           return <AlertLocation key={index} location={location} />;
         })}
         {vaxLocations.map((location, index) => {
           return <VaxLocation key={index} location={location} />;
         })}
-      </ul>
+      </div>
     );
   }
 }

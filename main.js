@@ -47,6 +47,7 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    icon: path.join(__dirname, 'src/assets/icons/png/injection.png'),
   });
 
   // and load the index.html of the app.

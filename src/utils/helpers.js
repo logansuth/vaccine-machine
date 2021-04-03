@@ -1,4 +1,5 @@
 const axios = require('axios');
+const amIEligibleLocations = require('./amIEligibleLocations');
 
 async function getData() {
   try {
@@ -98,10 +99,25 @@ function findTypes(name) {
   return types;
 }
 
+function findLink(name) {
+  if (name.indexOf('Walgreens') > -1 || name.indexOf('Duane Reade') > -1) {
+    return 'https://www.walgreens.com/topic/promotion/covid-vaccine.jsp';
+  } else if (name.indexOf('CVS') > -1) {
+    return 'https://www.cvs.com/vaccine/intake/store/covid-screener/covid-qns';
+  } else if (name.indexOf('Rite Aid') > -1) {
+    return 'https://www.riteaid.com/pharmacy/covid-qualifier';
+  } else if (amIEligibleLocations.includes(name)) {
+    return 'https://am-i-eligible.covid19vaccine.health.ny.gov/';
+  } else {
+    return 'https://vax4nyc.nyc.gov/patient/s/';
+  }
+}
+
 module.exports = {
   getData,
   findString,
   parseAppointments,
   findTypes,
   findIndices,
+  findLink,
 };

@@ -1,4 +1,9 @@
-const { findString, parseAppointments, findTypes } = require('./helpers');
+const {
+  findString,
+  parseAppointments,
+  findTypes,
+  findLink,
+} = require('./helpers');
 const VaxLocation = require('./locationClass');
 
 const UPDATED_AT_SEARCH_TERMS = ['text-gray-500 inline-block', '>', '<'];
@@ -112,10 +117,7 @@ function populateLocations(data, startIndices, stopIndex) {
       notes = null;
     }
 
-    const link =
-      name.indexOf('Walgreens') > -1 || name.indexOf('Duane Reade') > -1
-        ? 'https://www.walgreens.com/topic/promotion/covid-vaccine.jsp'
-        : 'https://vax4nyc.nyc.gov/patient/s/';
+    const link = findLink(name);
 
     const types = findTypes(name);
 

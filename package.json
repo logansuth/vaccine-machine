@@ -13,6 +13,26 @@
   "bugs": {
     "url": "https://github.com/alexdevero/electron-react-webpack-boilerplate/issues"
   },
+  "build": {
+    "appId": "com.electron.vaccine-machine",
+    "productName": "Vaccine Machine",
+    "copyright": "Copyright 2021 Logan Sutherland",
+    "directories": {
+      "buildResources": "/Users/logansutherland/Documents/coding/vaccine-machine/src/assets/icons/mac",
+      "output": "/Users/logansutherland/Documents/coding/vaccine-machine/builds"
+    },
+    "mac": {
+      "entitlements": "entitlements.plist",
+      "gatekeeperAssess": false,
+      "entitlementsInherit": "entitlements.plist",
+      "hardenedRuntime": true
+    },
+    "dmg": {
+      "sign": "false",
+      "icon": null
+    },
+    "afterSign": "scripts/notarize.js"
+  },
   "author": {
     "name": "Alex Devero",
     "email": "deveroalex@gmail.com",
@@ -43,6 +63,8 @@
     "prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
     "start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development",
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
     "package": "npm run build",
     "postpackage": "electron-packager ./ --out=./builds"
   },
@@ -65,8 +87,11 @@
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^5.1.1",
+    "dotenv": "^8.2.0",
     "electron": "^12.0.0",
     "electron-devtools-installer": "^3.1.1",
+    "electron-installer-dmg": "^3.0.0",
+    "electron-notarize": "^1.0.0",
     "electron-packager": "^15.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",

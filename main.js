@@ -109,6 +109,9 @@ async function finishedInitializing() {
 
   const [startIndices, stopIndex] = findIndices(data);
 
+  console.log('START INDICES——————', startIndices);
+  console.log('STOP INDEX———————', stopIndex);
+
   const initialVaxLocations = populateLocations(data, startIndices, stopIndex);
 
   vaxLocations = initialVaxLocations;

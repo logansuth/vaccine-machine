@@ -68,6 +68,8 @@ function populateLocations(data, startIndices, stopIndex) {
       endIndex
     );
 
+    console.log('UPDATED AT—————', updatedAt);
+
     const { name, nameEndIndex } = findString(
       data,
       NAME_SEARCH_TERMS,
@@ -76,6 +78,8 @@ function populateLocations(data, startIndices, stopIndex) {
       endIndex
     );
 
+    console.log('NAME——————', name);
+
     const { address, addressEndIndex } = findString(
       data,
       ADDRESS_SEARCH_TERMS,
@@ -83,6 +87,8 @@ function populateLocations(data, startIndices, stopIndex) {
       'address',
       endIndex
     );
+
+    console.log('ADDRESS————', address);
 
     let { appointments, appointmentsEndIndex } = findString(
       data,
@@ -94,6 +100,8 @@ function populateLocations(data, startIndices, stopIndex) {
 
     appointments = parseAppointments(appointments);
 
+    console.log('APPTS———————', appointments);
+
     let { found, notes } = findString(
       data,
       NOTES_SEARCH_TERMS,
@@ -101,6 +109,8 @@ function populateLocations(data, startIndices, stopIndex) {
       'notes',
       endIndex
     );
+
+    console.log('NOTES—————', notes);
 
     if (found) {
       notes = notes.slice(6, notes.length - 1);
@@ -110,7 +120,11 @@ function populateLocations(data, startIndices, stopIndex) {
 
     const link = findLink(name);
 
+    console.log('LINK——————', link);
+
     const types = findTypes(name);
+
+    console.log('TYPES ——————', types);
 
     const newVaxLocation = new VaxLocation(
       updatedAt,

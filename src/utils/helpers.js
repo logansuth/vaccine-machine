@@ -13,11 +13,11 @@ async function getData() {
 }
 
 function findIndices(data) {
-  const stopIndex = data.indexOf('Manually checked');
+  const stopIndex = data.indexOf('NYC In-Home Vaccinations') - 292;
 
   const startIndices = [];
 
-  let startIndex = 0;
+  let startIndex = data.indexOf('Call the hotline at 1-833-NYS-4-VAX');
 
   while (startIndex < stopIndex && startIndex !== -1) {
     startIndex = data.indexOf('text-gray-500 inline-block', startIndex + 1);

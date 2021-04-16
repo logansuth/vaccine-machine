@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './Header';
-import Filter from './Filter';
 import VaxList from './VaxList';
 import { connect } from 'react-redux';
 

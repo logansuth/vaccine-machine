@@ -5,9 +5,6 @@ const appBundleId = 'com.electron.vaccine-machine';
 const appleId = process.env.APPLEID;
 const appleIdPassword = process.env.APPLEIDPASSWORD;
 
-console.log('APPLE ID———', process.env.APPLEID);
-console.log('APPLE ID PASS———', process.env.APPLEIDPASSWORD);
-
 exports.default = async function notarizing(context) {
   const { electronPlatformName, appOutDir } = context;
   if (electronPlatformName !== 'darwin') {

@@ -1,6 +1,7 @@
 import React from 'react';
 import VaxLocation from './VaxLocation';
 import AlertLocation from './AlertLocation';
+import { connect } from 'react-redux';
 
 class VaxList extends React.Component {
   constructor(props) {
@@ -28,4 +29,9 @@ class VaxList extends React.Component {
   }
 }
 
-export default VaxList;
+const mapState = (state) => ({
+  vaxLocations: state.filteredLocations,
+  alertLocations: state.filteredAlerts,
+});
+
+export default connect(mapState)(VaxList);

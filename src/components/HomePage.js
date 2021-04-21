@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import VaxList from './VaxList';
 import { connect } from 'react-redux';
+import Icon from './Icon';
 
 const HomePage = (props) => {
   return (
@@ -16,18 +17,7 @@ const HomePage = (props) => {
         alertLocations={props.alertLocations}
         types={props.types}
       />
-      <div id="copyright">
-        <div>
-          Icon made by{' '}
-          <a href="https://www.freepik.com" title="Freepik">
-            Freepik
-          </a>{' '}
-          from{' '}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            www.flaticon.com
-          </a>
-        </div>
-      </div>
+      <Icon />
     </div>
   );
 };

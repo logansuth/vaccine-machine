@@ -3,7 +3,7 @@ import HowTo from './HowTo';
 import Title from './Title';
 import NumberOfApts from './NumberOfApts';
 
-const Header = (props) => {
+const Header = () => {
   return (
     <div className="flex">
       <Title />

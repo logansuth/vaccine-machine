@@ -7,11 +7,7 @@ import Icon from './Icon';
 const HomePage = (props) => {
   return (
     <div>
-      <Header
-        vaxLocations={props.vaxLocations}
-        alertLocations={props.alertLocations}
-        types={props.types}
-      />
+      <Header />
       <VaxList
         vaxLocations={props.vaxLocations}
         alertLocations={props.alertLocations}

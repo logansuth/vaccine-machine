@@ -5,8 +5,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const GET_LOCATIONS = 'GET_LOCATIONS';
 const NEW_ALERTS = 'NEW_ALERTS';
 const UPDATE_ALERTS = 'UPDATE_ALERTS';
-const UPDATE_FILTERS = 'UPDATE_FILTERS';
-const APPLY_FILTERS = 'APPLY FILTERS';
 
 export const getLocations = (locationsObj) => ({
   type: GET_LOCATIONS,
@@ -22,21 +20,9 @@ export const updateAlerts = () => ({
   type: UPDATE_ALERTS,
 });
 
-export const updateFilters = (filterObj) => ({
-  type: UPDATE_FILTERS,
-  filterObj,
-});
-
-export const applyFilters = () => ({
-  type: APPLY_FILTERS,
-});
-
 const initialState = {
   locations: [],
   alerts: [],
-  types: ['secondDose', 'teacher', 'sixtyPlus'],
-  filteredLocations: [],
-  filteredAlerts: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -85,41 +71,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         locations: locationsMinusAlerts,
         alerts: alertsMinusLocations,
-      };
-    }
-    case UPDATE_FILTERS: {
-      const types = [];
-      const filterObj = action.filterObj;
-
-      for (let key in filterObj) {
-        if (filterObj[key]) types.push(key);
-      }
-
-      return { ...state, types: types };
-    }
-    case APPLY_FILTERS: {
-      const filters = state.types;
-
-      const filteredLocations = state.locations.filter((location) => {
-        for (let i = 0; i < location.types.length; i++) {
-          if (filters.indexOf(location.types[i]) < 0) return false;
-        }
-
-        return true;
-      });
-
-      const filteredAlerts = state.alerts.filter((location) => {
-        for (let i = 0; i < location.types.length; i++) {
-          if (filters.indexOf(location.types[i]) < 0) return false;
-        }
-
-        return true;
-      });
-
-      return {
-        ...state,
-        filteredLocations: filteredLocations,
-        filteredAlerts: filteredAlerts,
       };
     }
     default:

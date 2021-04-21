@@ -15,8 +15,8 @@ const NumberOfApts = (props) => {
 };
 
 const mapState = (state) => ({
-  vaxLocations: state.filteredLocations,
-  alertLocations: state.filteredAlerts,
+  vaxLocations: state.locations,
+  alertLocations: state.alerts,
 });
 
 export default connect(mapState)(NumberOfApts);

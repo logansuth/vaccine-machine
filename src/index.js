@@ -3,12 +3,7 @@ import { render } from 'react-dom';
 import App from './components/App';
 import { Provider } from 'react-redux';
 
-import store, {
-  getLocations,
-  newAlerts,
-  updateAlerts,
-  applyFilters,
-} from './store';
+import store, { getLocations, newAlerts, updateAlerts } from './store';
 
 import { ipcRenderer, shell } from 'electron';
 
@@ -21,7 +16,6 @@ ipcRenderer.on('initial', (event, data) => {
     } locations.`,
   });
   store.dispatch(getLocations(data));
-  store.dispatch(applyFilters());
 });
 
 ipcRenderer.on('update', (event, data) => {
@@ -43,16 +37,13 @@ ipcRenderer.on('update', (event, data) => {
 
   store.dispatch(getLocations(vaxLocations));
   store.dispatch(updateAlerts());
-  store.dispatch(applyFilters());
 });
 
-// Since we are using HtmlWebpackPlugin WITHOUT a template, we should create our own root node in the body element before rendering into it
 let root = document.createElement('div');
 
 root.id = 'root';
 document.body.appendChild(root);
 
-// Now we can render our application into it
 render(
   <Provider store={store}>
     <App />

@@ -19,8 +19,7 @@ ipcRenderer.on('initial', (event, data) => {
 });
 
 ipcRenderer.on('update', (event, data) => {
-  const vaxLocations = data.vaxLocations;
-  const alertLocations = data.alertLocations;
+  const { vaxLocations, alertLocations } = data;
   const alertKeys = Object.keys(alertLocations);
 
   if (alertKeys.length) {

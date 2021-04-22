@@ -40,20 +40,17 @@ const rootReducer = (state = initialState, action) => {
     }
     case UPDATE_ALERTS: {
       const locationsMinusAlerts = state.locations.filter((location) => {
-        const locationName = location.name;
-
         const alertNames = state.alerts.map((alert) => alert.name);
 
-        const indexOfLocation = alertNames.indexOf(locationName);
+        const indexOfLocation = alertNames.indexOf(location.name);
 
         return indexOfLocation < 0;
       });
 
       const alertsMinusLocations = state.alerts.filter((alert) => {
-        const alertName = alert.name;
         const locationNames = state.locations.map((location) => location.name);
 
-        const indexOfAlert = locationNames.indexOf(alertName);
+        const indexOfAlert = locationNames.indexOf(alert.name);
 
         return indexOfAlert > -1;
       });

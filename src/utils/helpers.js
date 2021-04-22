@@ -56,6 +56,10 @@ function findString(
 }
 
 function parseAppointments(apptString) {
+  if (apptString === undefined) {
+    apptString = '';
+  }
+
   const apptsArray = [];
   let startIndex = 0;
 

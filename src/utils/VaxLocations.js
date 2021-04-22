@@ -29,10 +29,6 @@ const NOTES_SEARCH_TERMS = [
 ];
 
 function compareLocationData(oldData, newData) {
-  /*  First delete any keys in oldData that do not exist in newData
-  Then for keys that DO exist, update with new data
-  Else if they DON'T exist, add them to the oldData, and keep track of the updates for alert purposes=
-  */
   const alertWorthy = {};
 
   for (let key in oldData) {

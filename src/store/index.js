@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { convertObjToArr } from './helpers';
 
 const GET_LOCATIONS = 'GET_LOCATIONS';
 const NEW_ALERTS = 'NEW_ALERTS';
@@ -28,22 +29,12 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_LOCATIONS: {
-      const locationsArr = [];
-      const locationsObj = action.locationsObj;
-
-      for (let key in locationsObj) {
-        locationsArr.push(locationsObj[key]);
-      }
+      const locationsArr = convertObjToArr(action.locationsObj);
 
       return { ...state, locations: locationsArr };
     }
     case NEW_ALERTS: {
-      const alertArr = [];
-      const alertObj = action.alertObj;
-
-      for (let key in alertObj) {
-        alertArr.push(alertObj[key]);
-      }
+      const alertArr = convertObjToArr(action.alertObj);
 
       return { ...state, alerts: alertArr };
     }
